@@ -1,0 +1,31 @@
+PODS:
+  - GoogleMaps (3.0.3):
+    - GoogleMaps/Maps (= 3.0.3)
+  - GoogleMaps/Base (3.0.3)
+  - GoogleMaps/Maps (3.0.3):
+    - GoogleMaps/Base
+  - GooglePlaces (3.0.3):
+    - GoogleMaps/Base (= 3.0.3)
+  - SDWebImage (5.0.0):
+    - SDWebImage/Core (= 5.0.0)
+  - SDWebImage/Core (5.0.0)
+
+DEPENDENCIES:
+  - GoogleMaps
+  - GooglePlaces
+  - SDWebImage
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GoogleMaps
+    - GooglePlaces
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  GoogleMaps: fd5c9fa58871781b9fb94d4936f19c69fe60ce32
+  GooglePlaces: f09e76993c9c3ee4af8f4f7f535bb94d6aa3b649
+  SDWebImage: 5de80a0302de9e377e62f47d2fa1304efff0e55f
+
+PODFILE CHECKSUM: aaf1fa563ce76f6c62826c1b940b50fff2803d62
+
+COCOAPODS: 1.6.1
