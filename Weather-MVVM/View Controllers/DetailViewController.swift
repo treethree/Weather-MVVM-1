@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
     var cardViewController:CardViewController!
     var visualEffectView:UIVisualEffectView!
     
-    let cardHeight:CGFloat = 600
+    let cardHeight:CGFloat = 500
     let cardHandleAreaHeight:CGFloat = 138
     
     var cardVisible = false

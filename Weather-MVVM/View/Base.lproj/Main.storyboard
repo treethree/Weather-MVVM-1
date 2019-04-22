@@ -18,9 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weatherbg" translatesAutoresizingMaskIntoConstraints="NO" id="tn5-wa-Xaw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667.00000000000011"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rAi-x0-mQ2">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="145" id="iB4-L2-m1J" customClass="CurrentWeatherTableViewCell" customModule="Weather_MVVM" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="145"/>
@@ -87,11 +92,9 @@
                                                 <constraint firstItem="IaY-2f-SkX" firstAttribute="leading" secondItem="2qv-oI-82z" secondAttribute="trailing" constant="5" id="Fg0-9h-rRo"/>
                                                 <constraint firstAttribute="trailing" secondItem="p0J-7h-LGM" secondAttribute="trailing" id="Ihf-UF-2bl"/>
                                                 <constraint firstAttribute="trailing" secondItem="jIa-YT-Blk" secondAttribute="trailing" constant="78" id="Mkv-Sc-LRE"/>
-                                                <constraint firstItem="GUS-cq-tFk" firstAttribute="top" secondItem="l2v-CX-pcT" secondAttribute="top" constant="87.5" id="OMX-sp-NQb"/>
                                                 <constraint firstAttribute="bottom" secondItem="p0J-7h-LGM" secondAttribute="bottom" id="XIe-w0-tWh"/>
                                                 <constraint firstItem="jIa-YT-Blk" firstAttribute="top" secondItem="l2v-CX-pcT" secondAttribute="top" constant="28" id="ZWa-24-fds"/>
                                                 <constraint firstAttribute="bottom" secondItem="2qv-oI-82z" secondAttribute="bottom" constant="34.5" id="eed-n8-kZF"/>
-                                                <constraint firstItem="GUS-cq-tFk" firstAttribute="leading" secondItem="jIa-YT-Blk" secondAttribute="trailing" constant="21" id="fK0-9O-KyM"/>
                                                 <constraint firstAttribute="bottom" secondItem="jIa-YT-Blk" secondAttribute="bottom" constant="36.5" id="gTQ-KK-Ycy"/>
                                                 <constraint firstItem="2qv-oI-82z" firstAttribute="top" secondItem="YJM-eS-5oz" secondAttribute="bottom" constant="5" id="hGL-Jk-0Qk"/>
                                                 <constraint firstItem="p0J-7h-LGM" firstAttribute="leading" secondItem="l2v-CX-pcT" secondAttribute="leading" id="oNP-eS-hWO"/>
@@ -101,6 +104,7 @@
                                                 <constraint firstItem="YJM-eS-5oz" firstAttribute="leading" secondItem="l2v-CX-pcT" secondAttribute="leading" constant="40" id="tbz-mR-ezG"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="addBtnOutlet" destination="GUS-cq-tFk" id="DWK-cf-gKW"/>
                                             <outlet property="bgView" destination="p0J-7h-LGM" id="RON-Rb-v8b"/>
@@ -130,13 +134,17 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rAi-x0-mQ2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1T0-6e-lMw"/>
+                            <constraint firstItem="tn5-wa-Xaw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Dr-lX-0Nt"/>
                             <constraint firstItem="yHw-U4-OJc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="7nb-qp-Ewy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tn5-wa-Xaw" secondAttribute="bottom" id="AqC-5U-YM1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rAi-x0-mQ2" secondAttribute="bottom" id="IaA-mH-PZQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rAi-x0-mQ2" secondAttribute="trailing" id="Pyy-jk-KRq"/>
                             <constraint firstItem="yHw-U4-OJc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Uda-Ta-xSg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yHw-U4-OJc" secondAttribute="trailing" constant="10" id="W0Z-21-Ynu"/>
                             <constraint firstItem="rAi-x0-mQ2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="a3N-AH-wDg"/>
                             <constraint firstItem="yHw-U4-OJc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fvQ-Cd-5nR"/>
+                            <constraint firstItem="tn5-wa-Xaw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="htF-rF-SCG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tn5-wa-Xaw" secondAttribute="trailing" id="xNZ-iz-0Yc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -161,7 +169,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weatherbg" translatesAutoresizingMaskIntoConstraints="NO" id="iPL-L9-YhT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667.00000000000011"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I17-F1-Ahm">
                                 <rect key="frame" x="30" y="394" width="325" height="20"/>
