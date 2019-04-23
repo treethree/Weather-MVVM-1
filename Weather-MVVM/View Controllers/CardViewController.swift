@@ -10,6 +10,8 @@ import UIKit
 
 class CardViewController: UIViewController {
 
+    @IBOutlet weak var viewTrailing: NSLayoutConstraint!
+    @IBOutlet weak var viewLeading: NSLayoutConstraint!
     @IBOutlet weak var handleArea: UIView!
     @IBOutlet weak var content: UIView!
     
@@ -30,7 +32,6 @@ class CardViewController: UIViewController {
         }
     }
     
-    let objectsWeeks = ["Mon", "Tue", "Wed","Thu","Fri", "Sat", "Sun"]
     var weatherArrObj : [ForecastModel]!{
         didSet{
             DispatchQueue.main.async {
@@ -54,6 +55,15 @@ class CardViewController: UIViewController {
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 150, height: 310)
         
+    }
+    
+    func getDayNameBy(stringDate: String) -> String
+    {
+        let df  = DateFormatter()
+        df.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        let date = df.date(from: stringDate)!
+        df.dateFormat = "EEEE"
+        return df.string(from: date);
     }
     
     func setupWeatherData(){
@@ -104,8 +114,18 @@ extension CardViewController : UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = colView.dequeueReusableCell(withReuseIdentifier: "cellIdentifier", for: indexPath) as! WeatherCollectionViewCell
         let signTemp = String(format:"%@", "\u{00B0}") as String
+        
+        
         if weatherArrObj != nil{
-            cell.weekLbl.text = self.objectsWeeks[indexPath.item]
+            if indexPath.item == 0{
+                cell.weekLbl.text = "Today"
+            }
+            else if indexPath.item == 1{
+                cell.weekLbl.text = "Tomorrow"
+            }else{
+                cell.weekLbl.text = getDayNameBy(stringDate: weatherArrObj[0].list[indexPath.item * 8].dtTxt)
+            }
+            
             cell.descLbl.text = weatherArrObj[0].list[indexPath.item * 8].weather[0].main
             cell.hiTempLbl.text = ("\(String(Int(weatherArrObj[0].list[indexPath.item * 8].main.tempMax - 273.15)))\(signTemp)C")
             cell.lowTempLbl.text = ("\(String(Int(weatherArrObj[0].list[indexPath.item * 8].main.tempMin - 273.15)))\(signTemp)C")

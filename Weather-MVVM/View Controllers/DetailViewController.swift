@@ -52,6 +52,7 @@ class DetailViewController: UIViewController {
         winImgView.tintImageColor(color: .white)
         tempImgview.tintImageColor(color: .white)
         setupCard()
+        //navigationController?.navigationBar.isHidden = true
         
     }
 

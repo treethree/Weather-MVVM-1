@@ -28,7 +28,7 @@ class CurrentWeatherViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(CurrentWeatherViewController.tapFunction))
         startLbl.isUserInteractionEnabled = true
         startLbl.addGestureRecognizer(tap)
-        //navigationController?.isNavigationBarHidden = true
+        
     }
     
     @objc func tapFunction(sender:UITapGestureRecognizer) {
@@ -50,28 +50,6 @@ class CurrentWeatherViewController: UIViewController {
         
         startLbl.isHidden = true
     }
-
-    
-//    @IBAction func addBtnClick(_ sender: UIButton) {
-//
-//        let autocompleteController = GMSAutocompleteViewController()
-//        autocompleteController.delegate = self
-//
-//        // Specify the place data types to return.
-//        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
-//            UInt(GMSPlaceField.placeID.rawValue))!
-//        autocompleteController.placeFields = fields
-//
-//        // Specify a filter.
-//        let filter = GMSAutocompleteFilter()
-//        filter.type = .city
-//        autocompleteController.autocompleteFilter = filter
-//
-//        // Display the autocomplete view controller.
-//        present(autocompleteController, animated: true, completion: nil)
-//
-//        sender.isHidden = true
-//    }
     
     override func viewWillAppear(_ animated: Bool) {
         if currentWeatherViewModel.weatherArr?.count != 0{
@@ -84,6 +62,7 @@ class CurrentWeatherViewController: UIViewController {
             DispatchQueue.main.async {
                 self.roundButton.removeFromSuperview()
                 //roundButton = nil
+                self.roundButton.isHidden = true
             }
         }
     }
@@ -105,13 +84,6 @@ class CurrentWeatherViewController: UIViewController {
             // Display the autocomplete view controller.
             present(autocompleteController, animated: true, completion: nil)
         
-//        DispatchQueue.main.async {
-//            if let keyWindow = UIApplication.shared.keyWindow {
-//                keyWindow.addSubview(self.roundButton)
-//                NSLayoutConstraint.activate([
-//                    keyWindow.topAnchor.constraint(equalTo: self.roundButton.topAnchor, constant: -175-105)])
-//            }
-//        }
     }
     
     func createFloatingButton() {
@@ -125,18 +97,14 @@ class CurrentWeatherViewController: UIViewController {
         // We're manipulating the UI, must be on the main thread:
         DispatchQueue.main.async {
 
-//            if self.currentWeatherViewModel.weatherArr!.count == 0{
-//                self.topContForBtn = -175
-//            }else{
-//                self.topContForBtn = Float(-175 - (self.currentWeatherViewModel.weatherArr!.count * 145))
-//            }
-            
+
             if let keyWindow = UIApplication.shared.keyWindow {
                 keyWindow.addSubview(self.roundButton)
                 NSLayoutConstraint.activate([
-                    keyWindow.topAnchor.constraint(equalTo: self.roundButton.topAnchor, constant: 25),
+                    keyWindow.topAnchor.constraint(equalTo: self.roundButton.topAnchor, constant: CGFloat(self.topContForBtn)),
                     keyWindow.trailingAnchor.constraint(equalTo: self.roundButton.trailingAnchor, constant: 25),
-//                    keyWindow.bottomAnchor.constraint(equalTo: self.roundButton.bottomAnchor, constant: 15),
+//                    self.roundButton.rightAnchor.constraint(equalTo: self.tblView.safeAreaLayoutGuide.rightAnchor, constant: -10),
+//                    self.roundButton.bottomAnchor.constraint(equalTo: self.tblView.safeAreaLayoutGuide.bottomAnchor, constant: -10),
                     self.roundButton.widthAnchor.constraint(equalToConstant: 55),
                     self.roundButton.heightAnchor.constraint(equalToConstant: 55)])
             }
@@ -172,7 +140,7 @@ extension CurrentWeatherViewController : UITableViewDataSource, UITableViewDeleg
         
         let weatherArrObj = currentWeatherViewModel.weatherArr
         let weatherObj = weatherArrObj![indexPath.row]
-        cell?.addBtnOutlet.tag = indexPath.row
+        //cell?.addBtnOutlet.tag = indexPath.row
 
         cell?.cityNameLbl.text = weatherObj.name
         //convert kelvin to celsius
@@ -231,7 +199,19 @@ extension CurrentWeatherViewController: GMSAutocompleteViewControllerDelegate {
                 self.tblView.reloadData()
             }
         }
-         createFloatingButton()
+
+        if self.currentWeatherViewModel.weatherArr!.count == 0{
+            self.topContForBtn = -175
+        }else{
+            if self.topContForBtn < -610{
+                self.topContForBtn = -610
+            }else{
+                self.topContForBtn = Float(-175 - (self.currentWeatherViewModel.weatherArr!.count * 145))
+            }
+        }
+        
+        createFloatingButton()
+        
         
 //        print("Place name: \(place.name)")
 //        print("Place ID: \(place.placeID)")

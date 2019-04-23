@@ -10,18 +10,17 @@ import UIKit
 import SDWebImage
 
 class CurrentWeatherTableViewCell: UITableViewCell {
-    @IBOutlet weak var addBtnOutlet: UIButton!
     
     @IBOutlet weak var cityNameLbl: UILabel!
     @IBOutlet weak var hiTempLbl: UILabel!
     @IBOutlet weak var lowTempLbl: UILabel!
     @IBOutlet weak var iconImgView: UIImageView!
     @IBOutlet weak var bgView: UIView!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-          bgView.setGradientBackground()
+          bgView.setGradientBackground()      
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
