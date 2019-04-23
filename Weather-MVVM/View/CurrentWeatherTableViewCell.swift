@@ -33,5 +33,13 @@ class CurrentWeatherTableViewCell: UITableViewCell {
         let urlString = String(format: iconUrl, arguments:[iconName])
         iconImgView.sd_setImage(with: URL(string: urlString), placeholderImage: UIImage(named: "no_image"))
     }
+    
+    func setUpCurrentWeatherData(city : String, hiTemp : Double, loTemp : Double, iconImg : String ){
+        let signTemp = String(format:"%@", "\u{00B0}") as String
+        cityNameLbl.text = city
+        hiTempLbl.text = "\(String(Int(hiTemp - 273.15)))\(signTemp)C "
+        lowTempLbl.text = "\(String(Int(loTemp - 273.15)))\(signTemp)C"
+        setIconImage(iconName: iconImg)
+    }
 
 }

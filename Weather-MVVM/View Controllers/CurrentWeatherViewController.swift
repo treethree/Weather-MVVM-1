@@ -145,11 +145,13 @@ extension CurrentWeatherViewController : UITableViewDataSource, UITableViewDeleg
         cell?.cityNameLbl.text = weatherObj.name
         //convert kelvin to celsius
         let signTemp = String(format:"%@", "\u{00B0}") as String
-        
+
         cell?.hiTempLbl.text = "\(String(Int(weatherObj.main.tempMax - 273.15)))\(signTemp)C "
         cell?.lowTempLbl.text = "\(String(Int(weatherObj.main.tempMin - 273.15)))\(signTemp)C"
 
         cell?.setIconImage(iconName: weatherObj.weather[0].icon)
+        
+//        cell?.setUpCurrentWeatherData(city: weatherObj.name, hiTemp: weatherObj.main.tempMax, loTemp: weatherObj.main.tempMin, iconImg: weatherObj.weather[0].icon)
         
         return cell!
     }
