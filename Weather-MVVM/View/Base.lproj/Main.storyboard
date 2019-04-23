@@ -210,7 +210,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="iPL-L9-YhT" firstAttribute="leading" secondItem="IZs-vp-bhL" secondAttribute="leading" id="253-qO-MSn"/>
-                            <constraint firstItem="iPL-L9-YhT" firstAttribute="top" secondItem="IZs-vp-bhL" secondAttribute="top" constant="-20" id="3UZ-oM-2Qd"/>
+                            <constraint firstItem="iPL-L9-YhT" firstAttribute="top" secondItem="VUr-kB-GNQ" secondAttribute="top" id="3UZ-oM-2Qd"/>
                             <constraint firstItem="pSk-5z-zji" firstAttribute="leading" secondItem="IHo-Xg-dOT" secondAttribute="trailing" constant="4" id="51p-d8-upI"/>
                             <constraint firstItem="I17-F1-Ahm" firstAttribute="top" secondItem="LDO-yQ-bO1" secondAttribute="bottom" constant="2" id="7FT-y7-qLc"/>
                             <constraint firstItem="IHo-Xg-dOT" firstAttribute="top" secondItem="I17-F1-Ahm" secondAttribute="bottom" constant="2" id="Iku-En-6rV"/>
@@ -232,6 +232,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IZs-vp-bhL"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="cityLbl" destination="I17-F1-Ahm" id="Dic-73-DW6"/>
                         <outlet property="descLbl" destination="LDO-yQ-bO1" id="Ax5-Qn-205"/>

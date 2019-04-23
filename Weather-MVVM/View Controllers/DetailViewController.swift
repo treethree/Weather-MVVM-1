@@ -52,8 +52,17 @@ class DetailViewController: UIViewController {
         winImgView.tintImageColor(color: .white)
         tempImgview.tintImageColor(color: .white)
         setupCard()
-        //navigationController?.navigationBar.isHidden = true
         
+    }
+    
+    func setupDetailViewData(temp : Double,city : String, desc : String, wind : Double, hiTemp : Double, lowTemp : Double){
+        let signTemp = String(format:"%@", "\u{00B0}") as String
+        self.city = city
+        self.temp = "\(String(Int(temp - 273.15)))\(signTemp) "
+        self.desc = desc
+        self.wind = "\(String(Int(wind)))m/s"
+        self.hilowTemp = "\(String(Int(hiTemp - 273.15)))/\(String(Int(lowTemp - 273.15)))\(signTemp)C"
+        globalCityName = city
     }
 
     

@@ -29,6 +29,7 @@ class CurrentWeatherViewController: UIViewController {
         startLbl.isUserInteractionEnabled = true
         startLbl.addGestureRecognizer(tap)
         
+        makeNavbarClear()
     }
     
     @objc func tapFunction(sender:UITapGestureRecognizer) {
@@ -140,18 +141,8 @@ extension CurrentWeatherViewController : UITableViewDataSource, UITableViewDeleg
         
         let weatherArrObj = currentWeatherViewModel.weatherArr
         let weatherObj = weatherArrObj![indexPath.row]
-        //cell?.addBtnOutlet.tag = indexPath.row
-
-        cell?.cityNameLbl.text = weatherObj.name
-        //convert kelvin to celsius
-        let signTemp = String(format:"%@", "\u{00B0}") as String
-
-        cell?.hiTempLbl.text = "\(String(Int(weatherObj.main.tempMax - 273.15)))\(signTemp)C "
-        cell?.lowTempLbl.text = "\(String(Int(weatherObj.main.tempMin - 273.15)))\(signTemp)C"
-
-        cell?.setIconImage(iconName: weatherObj.weather[0].icon)
         
-//        cell?.setUpCurrentWeatherData(city: weatherObj.name, hiTemp: weatherObj.main.tempMax, loTemp: weatherObj.main.tempMin, iconImg: weatherObj.weather[0].icon)
+        cell?.setUpCurrentWeatherData(city: weatherObj.name, hiTemp: weatherObj.main.tempMax, loTemp: weatherObj.main.tempMin, iconImg: weatherObj.weather[0].icon)
         
         return cell!
     }
@@ -160,15 +151,8 @@ extension CurrentWeatherViewController : UITableViewDataSource, UITableViewDeleg
         
         let weatherArrObj = currentWeatherViewModel.weatherArr
         let weatherObj = weatherArrObj![indexPath.row]
-        let signTemp = String(format:"%@", "\u{00B0}") as String
-        
-        vc?.temp = "\(String(Int(weatherObj.main.temp - 273.15)))\(signTemp) "
-        vc?.desc = weatherObj.weather[0].main
-        vc?.city = weatherObj.name
-        vc?.wind = "\(String(Int(weatherObj.wind.speed)))m/s"
-        vc?.hilowTemp = "\(String(Int(weatherObj.main.tempMax - 273.15)))/\(String(Int(weatherObj.main.tempMin - 273.15)))\(signTemp)C"
-        
-        globalCityName = weatherObj.name
+        vc?.setupDetailViewData(temp: weatherObj.main.temp, city: weatherObj.name, desc: weatherObj.weather[0].main, wind: weatherObj.wind.speed, hiTemp: weatherObj.main.tempMax, lowTemp: weatherObj.main.tempMin)
+
         navigationController?.pushViewController(vc!, animated: true)
     }
     

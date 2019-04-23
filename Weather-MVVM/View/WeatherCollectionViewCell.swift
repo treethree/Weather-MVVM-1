@@ -20,4 +20,18 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+//    func setupFiveDaysData(week : String, desc : String, hiTemp: Double, lowTemp: Double, iconImg : String){
+//        weekLbl.text = week
+//        descLbl.text = desc
+//        hiTempLbl.text = hiTemp
+//        lowTempLbl.text = lowTemp
+//        setIconImage(iconName: iconImg)
+//    }
+    
+    func setIconImage(iconName : String){
+        let iconUrl = "http://openweathermap.org/img/w/%@.png"
+        let urlString = String(format: iconUrl, arguments:[iconName])
+        iconImgView.sd_setImage(with: URL(string: urlString), placeholderImage: UIImage(named: "no_image"))
+    }
 }

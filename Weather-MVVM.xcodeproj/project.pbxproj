@@ -26,6 +26,7 @@
 		2F421384226BAFBE001943FA /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F421383226BAFBE001943FA /* CardViewModel.swift */; };
 		2F42138D226BF56C001943FA /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F42138B226BF56C001943FA /* WeatherCollectionViewCell.swift */; };
 		2F42138E226BF56C001943FA /* WeatherCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F42138C226BF56C001943FA /* WeatherCollectionViewCell.xib */; };
+		2FB25A23226F5BFF00C81C82 /* NavigationbarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB25A22226F5BFF00C81C82 /* NavigationbarExtension.swift */; };
 		5B71898788437515DAFC0142 /* Pods_Weather_MVVMTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6E4F48A8E5163E22D2DE70D /* Pods_Weather_MVVMTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		2F421383226BAFBE001943FA /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		2F42138B226BF56C001943FA /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		2F42138C226BF56C001943FA /* WeatherCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCollectionViewCell.xib; sourceTree = "<group>"; };
+		2FB25A22226F5BFF00C81C82 /* NavigationbarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationbarExtension.swift; sourceTree = "<group>"; };
 		5C49EC1E8B513022150EDD4A /* Pods_Weather_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECE9279E5EE6D7017E2BC43 /* Pods-Weather-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-Weather-MVVM/Pods-Weather-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		6CD315F39EB26A3445614C9E /* Pods-Weather-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather-MVVM.release.xcconfig"; path = "Target Support Files/Pods-Weather-MVVM/Pods-Weather-MVVM.release.xcconfig"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			children = (
 				2F42137322698505001943FA /* GradientBackgroundExtension.swift */,
 				2F42137D226B818A001943FA /* ImageTintColorExtension.swift */,
+				2FB25A22226F5BFF00C81C82 /* NavigationbarExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				2F42136622691804001943FA /* CurrentWeatherViewController.swift in Sources */,
 				2F42137422698505001943FA /* GradientBackgroundExtension.swift in Sources */,
 				2F421378226A713D001943FA /* CardViewController.swift in Sources */,
+				2FB25A23226F5BFF00C81C82 /* NavigationbarExtension.swift in Sources */,
 				2F42137E226B818A001943FA /* ImageTintColorExtension.swift in Sources */,
 				2F42136A22691CD5001943FA /* CurrentWeatherViewModel.swift in Sources */,
 				2F421384226BAFBE001943FA /* CardViewModel.swift in Sources */,
