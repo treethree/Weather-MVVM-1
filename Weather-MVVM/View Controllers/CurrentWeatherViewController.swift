@@ -14,6 +14,7 @@ var globalCityName : String = ""
 
 class CurrentWeatherViewController: UIViewController {
     
+    @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var startLbl: UILabel!
     
@@ -52,80 +53,36 @@ class CurrentWeatherViewController: UIViewController {
         startLbl.isHidden = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if currentWeatherViewModel.weatherArr?.count != 0{
-            createFloatingButton()
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        if roundButton.superview != nil {
-            DispatchQueue.main.async {
-                self.roundButton.removeFromSuperview()
-                //roundButton = nil
-                self.roundButton.isHidden = true
-            }
-        }
-    }
-    
-    @objc func addBtnClicked(){
+    @IBAction func addBtnClick(_ sender: Any) {
         let autocompleteController = GMSAutocompleteViewController()
-            autocompleteController.delegate = self
-    
-            // Specify the place data types to return.
-            let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
-                UInt(GMSPlaceField.placeID.rawValue))!
-            autocompleteController.placeFields = fields
-    
-            // Specify a filter.
-            let filter = GMSAutocompleteFilter()
-            filter.type = .city
-            autocompleteController.autocompleteFilter = filter
-    
-            // Display the autocomplete view controller.
-            present(autocompleteController, animated: true, completion: nil)
+        autocompleteController.delegate = self
         
+        // Specify the place data types to return.
+        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
+            UInt(GMSPlaceField.placeID.rawValue))!
+        autocompleteController.placeFields = fields
+        
+        // Specify a filter.
+        let filter = GMSAutocompleteFilter()
+        filter.type = .city
+        autocompleteController.autocompleteFilter = filter
+        
+        // Display the autocomplete view controller.
+        present(autocompleteController, animated: true, completion: nil)
     }
     
-    func createFloatingButton() {
-        roundButton = UIButton(type: .custom)
-        roundButton.translatesAutoresizingMaskIntoConstraints = false
-        roundButton.backgroundColor = .white
-        // Make sure you replace the name of the image:
-        roundButton.setImage(UIImage(named:"plus_image"), for: .normal)
-        // Make sure to create a function and replace DOTHISONTAP with your own function:
-        roundButton.addTarget(self, action: #selector(addBtnClicked), for: UIControl.Event.touchUpInside)
-        // We're manipulating the UI, must be on the main thread:
-        DispatchQueue.main.async {
-
-
-            if let keyWindow = UIApplication.shared.keyWindow {
-                keyWindow.addSubview(self.roundButton)
-                NSLayoutConstraint.activate([
-                    keyWindow.topAnchor.constraint(equalTo: self.roundButton.topAnchor, constant: CGFloat(self.topContForBtn)),
-                    keyWindow.trailingAnchor.constraint(equalTo: self.roundButton.trailingAnchor, constant: 25),
-//                    self.roundButton.rightAnchor.constraint(equalTo: self.tblView.safeAreaLayoutGuide.rightAnchor, constant: -10),
-//                    self.roundButton.bottomAnchor.constraint(equalTo: self.tblView.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-                    self.roundButton.widthAnchor.constraint(equalToConstant: 55),
-                    self.roundButton.heightAnchor.constraint(equalToConstant: 55)])
-            }
-            // Make the button round:
-            self.roundButton.layer.cornerRadius = 27.5
-            // Add a black shadow:
-            self.roundButton.layer.shadowColor = UIColor.black.cgColor
-            self.roundButton.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
-            self.roundButton.layer.masksToBounds = false
-            self.roundButton.layer.shadowRadius = 2.0
-            self.roundButton.layer.shadowOpacity = 0.5
-            // Add a pulsing animation to draw attention to button:
-            let scaleAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
-            scaleAnimation.duration = 0.4
-            scaleAnimation.repeatCount = .greatestFiniteMagnitude
-            scaleAnimation.autoreverses = true
-            scaleAnimation.fromValue = 1.0;
-            scaleAnimation.toValue = 1.05;
-            self.roundButton.layer.add(scaleAnimation, forKey: "scale")
-        }
+    func setupFloatButton(){
+        addBtn.backgroundColor = .white
+        addBtn.setImage(UIImage(named:"plus_image"), for: .normal)
+        addBtn.widthAnchor.constraint(equalToConstant: 75)
+        addBtn.heightAnchor.constraint(equalToConstant: 75)
+        addBtn.layer.cornerRadius = 37.5
+        // Add a black shadow:
+        addBtn.layer.shadowColor = UIColor.black.cgColor
+        addBtn.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
+        addBtn.layer.masksToBounds = false
+        addBtn.layer.shadowRadius = 2.0
+        addBtn.layer.shadowOpacity = 0.5
     }
 }
 
@@ -185,18 +142,8 @@ extension CurrentWeatherViewController: GMSAutocompleteViewControllerDelegate {
                 self.tblView.reloadData()
             }
         }
-
-        if self.currentWeatherViewModel.weatherArr!.count == 0{
-            self.topContForBtn = -175
-        }else{
-            if self.topContForBtn < -610{
-                self.topContForBtn = -610
-            }else{
-                self.topContForBtn = Float(-175 - (self.currentWeatherViewModel.weatherArr!.count * 145))
-            }
-        }
         
-        createFloatingButton()
+        setupFloatButton()
         
         
 //        print("Place name: \(place.name)")
